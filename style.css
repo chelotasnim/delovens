@@ -25,6 +25,16 @@
     src: url('plugins/Poppins/Poppins-SemiBold.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'poppins';
+    src: url('plugins/Poppins/Poppins-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'poppins-l';
+    src: url('plugins/Poppins/Poppins-Light.ttf') format('truetype');
+}
+
 nav {
     position: fixed;
     display: flex;
@@ -245,7 +255,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right bottom, rgba(255, 255, 255, .15) 50%, transparent 50%);
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, .25) 50%, transparent 50%);
     transition: .5s;
     z-index: 5;
 }
@@ -258,12 +268,164 @@ nav {
     font-size: 84px;
 }
 
+#ads {
+    display: flex;
+    padding-top: 48px;
+    padding-bottom: 100px;
+    min-height: max-content;
+    justify-content: center;
+    align-items: center;
+}
+
+#ads .ads-popup {
+    position: relative;
+    display: flex;
+    width: max-content;
+    flex-direction: column;
+}
+
+.ads-popup .row:nth-child(2) {
+    position: relative;
+    display: flex;
+    border-top-right-radius: 24px;
+}
+
+.ads-popup .box {
+    flex: 3;
+    padding-top: 24px;
+    padding-right: 24px;
+    background: var(--main);
+    border-top-right-radius: 24px;
+    z-index: 2;
+}
+
+.ads-popup .card {
+    flex: 2;
+    background: rgb(255, 255, 255);
+    border-radius: 24px;
+}
+
+#top-ads-card {
+    display: flex;
+    width: 65vw;
+    height: 250px;
+    max-width: 1000px;
+    padding-right: 380px;
+    justify-content: center;
+    align-items: center;
+    border-bottom-right-radius: 0;
+    box-shadow: 5px -5px 15px rgba(0, 0, 0, .05);
+}
+
+#top-ads-card img {
+    width: 300px;
+    object-fit: contain;
+    transition: .1s;
+}
+
+#top-ads-card img:hover {
+    transform: translateY(-12px);
+}
+
+#left-ads-card {
+    position: relative;
+    padding: 28px 32px;
+    max-width: 596px;
+    height: calc(200px - 24px);
+    box-shadow: 5px -5px 15px rgba(0, 0, 0, .05);
+    overflow: hidden;
+}
+
+#left-ads-card .rate-bg {
+    position: absolute;
+    bottom: -90px;
+    right: -90px;
+    padding: 60px 110px 80px 55px;
+    background: rgb(245, 245, 255);
+    border-radius: 50%;
+    font-size: 64px;
+    color: rgb(225, 225, 245);
+}
+
+#left-ads-card p {
+    position: relative;
+    z-index: 1;
+    font-family: 'poppins';
+    color: rgb(70, 70, 70);
+}
+
+#left-ads-card span {
+    font-family: 'poppins-l';
+    font-size: 14px;
+    color: rgb(120, 120, 150);
+}
+
+#left-ads-card .rating {
+    position: absolute;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    bottom: 28px;
+}
+
+#left-ads-card .star {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#left-ads-card .star i {
+    color: rgb(255, 225, 0);
+}
+
+#bottom-ads-card {
+    position: relative;
+    display: flex;
+    min-width: 380px;
+    max-width: 380px;
+    height: 200px;
+    justify-content: center;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, .05);
+}
+
+#bottom-ads-card::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: -24px;
+    width: 24px;
+    height: 24px;
+    background: rgb(255, 255, 255);
+}
+
+#phone {
+    position: absolute;
+    display: flex;
+    width: 75%;
+    transform: translateY(-300px);
+    justify-content: center;
+    transition: .3s;
+}
+
+#phone:hover {
+    transform: translateY(-324px);
+}
+
+#phone img {
+    position: absolute;
+    width: 100%;
+    object-fit: contain;
+}
+
 @media(max-width: 1200px) {
     .frame-line {
         width: 48px;
     }
 
-    #home {
+    #home,
+    #ads {
         padding-left: 100px;
         padding-right: 100px;
     }
@@ -311,6 +473,70 @@ nav {
     #home .est-line {
         margin-top: 52px;
     }
+
+    #top-ads-card img {
+        width: 200px;
+    }
+
+    #top-ads-card img:hover {
+        transform: translateY(-6px);
+    }
+
+
+    #top-ads-card {
+        height: 150px;
+        padding-right: 310px;
+    }
+
+    #left-ads-card {
+        height: calc(250px - 24px);
+    }
+
+    #bottom-ads-card {
+        height: 250px;
+        min-width: 310px;
+        max-width: 310px;
+    }
+
+    #phone {
+        width: 80%;
+        transform: translateY(-200px);
+    }
+
+    #phone:hover {
+        transform: translateY(-212px);
+    }
+
+    #left-ads-card .rate-bg {
+        bottom: -75px;
+        right: -75px;
+        padding: 40px 100px 74px 48px;
+        font-size: 48px;
+        opacity: .6;
+    }
+}
+
+@media(max-width: 850px) {
+    #top-ads-card img {
+        width: 175px;
+    }
+
+    #left-ads-card {
+        padding: 22px 24px;
+    }
+
+    #left-ads-card p {
+        line-height: 24px;
+        font-size: 14px;
+    }
+
+    #left-ads-card .rating {
+        bottom: 22px;
+    }
+
+    #left-ads-card span {
+        font-size: 12px;
+    }
 }
 
 @media(max-width: 750px) {
@@ -323,9 +549,101 @@ nav {
         width: 32px;
     }
 
-    #home {
+    #home,
+    #ads {
         padding-left: 72px;
         padding-right: 72px;
+    }
+
+    #top-ads-card {
+        height: 125px;
+        padding-right: 280px;
+    }
+
+    #top-ads-card img {
+        width: 150px;
+    }
+
+    #left-ads-card {
+        height: calc(280px - 12px);
+    }
+
+    #bottom-ads-card {
+        height: 280px;
+        min-width: 280px;
+        max-width: 280px;
+    }
+
+    #phone {
+        width: 80%;
+        transform: translateY(-175px);
+    }
+
+    #phone:hover {
+        transform: translateY(-185px);
+    }
+
+    .ads-popup .box {
+        padding-top: 12px;
+        padding-right: 12px;
+    }
+}
+
+@media(max-width: 650px) {
+    #home {
+        padding-top: 100px;
+        padding-bottom: 28px;
+        min-height: max-content;
+        align-items: flex-start;
+    }
+
+    #home .oven {
+        height: calc(70vh - 12px);
+    }
+
+    .ads-popup .row:nth-child(2) {
+        flex-direction: column;
+    }
+
+    .ads-popup .box {
+        flex: none;
+        padding-right: 0;
+        order: 2;
+    }
+
+    #ads {
+        padding-top: 0;
+    }
+
+    #top-ads-card {
+        padding: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    #left-ads-card {
+        min-height: 150px;
+        height: max-content;
+    }
+
+    #bottom-ads-card {
+        flex: none;
+        order: 1;
+        width: 100%;
+        max-width: 100%;
+        height: 475px;
+    }
+
+    #bottom-ads-card::before {
+        display: none;
+    }
+
+    #phone {
+        transform: none;
+        width: 224px;
+    }
+
+    #phone:hover {
+        transform: none;
     }
 }
 
@@ -342,12 +660,16 @@ nav {
         padding-top: 72px;
         padding-left: 16px;
         padding-right: 16px;
-        align-items: flex-start;
+    }
+
+    #ads {
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     #home .oven {
         width: 100vw;
-        height: calc(100vh - 100px);
+        height: calc(100vh - 212px);
         border-radius: 28px;
     }
 
