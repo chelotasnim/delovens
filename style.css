@@ -419,13 +419,73 @@ nav {
     object-fit: contain;
 }
 
+#menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#menu .header {
+    display: block;
+    margin: 24px 0 72px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 48px;
+    color: var(--strong);
+}
+
+#menu .row {
+    display: flex;
+    width: 72.5vw;
+    margin-bottom: 72px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+#menu .col {
+    display: flex;
+    min-width: 250px;
+    max-width: 22vw;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    color: var(--strong);
+}
+
+#menu img {
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+}
+
+#menu p {
+    margin-top: 12px;
+    line-height: 24px;
+    text-align: justify;
+}
+
+#menu .col span {
+    font-weight: 600;
+    font-size: 22px;
+}
+
+@media(max-width: 1250px) {
+    #menu .row {
+        width: initial;
+        justify-content: center;
+        gap: 32px;
+    }
+}
+
 @media(max-width: 1200px) {
     .frame-line {
         width: 48px;
     }
 
     #home,
-    #ads {
+    #ads,
+    #menu {
         padding-left: 100px;
         padding-right: 100px;
     }
@@ -433,6 +493,15 @@ nav {
     #home .oven {
         width: 80vw;
         border-radius: 28px;
+    }
+
+    #menu .header {
+        margin: 12px 0 54px;
+        font-size: 40px;
+    }
+
+    #menu img {
+        height: 400px;
     }
 }
 
@@ -459,6 +528,10 @@ nav {
 
     #home .text span:nth-child(3) {
         font-size: 13px;
+    }
+
+    #ads {
+        padding-bottom: 84px;
     }
 
     .btn {
@@ -550,9 +623,14 @@ nav {
     }
 
     #home,
-    #ads {
+    #ads,
+    #menu {
         padding-left: 72px;
         padding-right: 72px;
+    }
+
+    #ads {
+        padding-bottom: 54px;
     }
 
     #top-ads-card {
@@ -586,6 +664,29 @@ nav {
     .ads-popup .box {
         padding-top: 12px;
         padding-right: 12px;
+    }
+
+    #menu .header {
+        margin: 0 0 32px;
+        font-size: 28px;
+    }
+
+    #menu .col {
+        gap: 12px;
+    }
+}
+
+@media(max-width: 691px) {
+    #menu .col {
+        min-width: 300px;
+    }
+
+    #menu .col:nth-child(even) {
+        flex-direction: column-reverse;
+    }
+
+    #menu img {
+        height: 500px;
     }
 }
 
