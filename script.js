@@ -15,3 +15,12 @@ nav_toggle.addEventListener(
         float_nav.classList.toggle('show')
     }
 )
+
+const fact_el = document.querySelector('#fact')
+const facts = [
+    'Fact: Chocolate could actually boost your happiness',
+    'Fact: Brownies first served in Chicago, United State',
+    'Tip: Eat chocolate in moderation for the sweetest benefits'
+]
+const index = Math.floor(Math.random() * 3)
+fact_el.textContent = facts[index]
