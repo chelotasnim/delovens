@@ -765,6 +765,7 @@ footer .list-col {
 #fact {
     position: absolute;
     bottom: 54px;
+    text-align: center;
     font-style: italic;
     font-size: 18px;
 }
@@ -1297,6 +1298,7 @@ footer .list-col {
     }
 
     footer .double-list {
+        max-width: 195px;
         justify-content: space-between;
         gap: 24px;
     }
@@ -1374,6 +1376,11 @@ footer .list-col {
 
     footer .row:last-child {
         font-size: 10px;
+    }
+
+    #fact {
+        line-height: 24px;
+        font-size: 14px;
     }
 }
 
