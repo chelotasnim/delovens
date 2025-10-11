@@ -35,6 +35,11 @@
     src: url('plugins/Poppins/Poppins-Light.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'italianno';
+    src: url('plugins/Italianno/Italianno-Regular.ttf') format('truetype');
+}
+
 nav {
     position: fixed;
     display: flex;
@@ -268,29 +273,36 @@ nav {
     font-size: 84px;
 }
 
-#ads {
+#ads,
+#availability {
     display: flex;
-    padding-top: 48px;
-    padding-bottom: 100px;
+    padding-top: 64px;
+    padding-bottom: 48px;
     min-height: max-content;
     justify-content: center;
     align-items: center;
 }
 
-#ads .ads-popup {
+#ads .page .ads-popup,
+#availability .page .ads-popup {
     position: relative;
     display: flex;
     width: max-content;
     flex-direction: column;
 }
 
-.ads-popup .row:nth-child(2) {
+#availability {
+    padding-bottom: 0;
+}
+
+.page .ads-popup .row:nth-child(2) {
     position: relative;
     display: flex;
+    align-items: flex-start;
     border-top-right-radius: 24px;
 }
 
-.ads-popup .box {
+.page .ads-popup .box {
     flex: 3;
     padding-top: 24px;
     padding-right: 24px;
@@ -299,13 +311,13 @@ nav {
     z-index: 2;
 }
 
-.ads-popup .card {
+.page .ads-popup .card {
     flex: 2;
     background: rgb(255, 255, 255);
     border-radius: 24px;
 }
 
-#top-ads-card {
+.page .ads-popup .top-ads-card {
     display: flex;
     width: 65vw;
     height: 250px;
@@ -317,17 +329,53 @@ nav {
     box-shadow: 5px -5px 15px rgba(0, 0, 0, .05);
 }
 
-#top-ads-card img {
+#availability.page .ads-popup .top-ads-card {
+    padding-top: 32px;
+    padding-right: 363px;
+    max-width: 750px;
+    height: 200px;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.page .ads-popup .top-ads-card img {
     width: 300px;
     object-fit: contain;
     transition: .1s;
 }
 
-#top-ads-card img:hover {
+#availability.page .ads-popup .top-ads-card .insta-logo {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    text-decoration: none;
+}
+
+#availability.page .ads-popup .top-ads-card .insta-logo span {
+    display: block;
+    font-family: 'italianno';
+    font-size: 54px;
+    color: #C13584;
+}
+
+#availability.page .ads-popup .top-ads-card img {
+    pointer-events: none;
+    width: 18px;
+    object-fit: contain;
+}
+
+#availability.page .ads-popup .top-ads-card p {
+    transform: translateY(-16px);
+    font-family: 'poppins-l';
+    font-size: 12px;
+    color: rgb(120, 120, 120);
+}
+
+.page .ads-popup .top-ads-card img:hover {
     transform: translateY(-12px);
 }
 
-#left-ads-card {
+.page .ads-popup .left-ads-card {
     position: relative;
     padding: 28px 32px;
     max-width: 596px;
@@ -336,7 +384,25 @@ nav {
     overflow: hidden;
 }
 
-#left-ads-card .rate-bg {
+#availability.page .ads-popup .left-ads-card {
+    display: flex;
+    height: calc(313px - 24px);
+    min-width: calc(375px - 12px);
+    max-width: calc(375px - 12px);
+    border-bottom-right-radius: 0;
+    justify-content: center;
+    overflow: visible;
+}
+
+#availability.page .ads-popup .left-ads-card .phone {
+    transform: translateY(-112px);
+}
+
+#availability.page .ads-popup .left-ads-card .phone:hover {
+    transform: translateY(-124px);
+}
+
+.page .ads-popup .left-ads-card .rate-bg {
     position: absolute;
     bottom: -90px;
     right: -90px;
@@ -347,20 +413,20 @@ nav {
     color: rgb(225, 225, 245);
 }
 
-#left-ads-card p {
+.page .ads-popup .left-ads-card p {
     position: relative;
     z-index: 1;
     font-family: 'poppins';
     color: rgb(70, 70, 70);
 }
 
-#left-ads-card span {
+.page .ads-popup .left-ads-card span {
     font-family: 'poppins-l';
     font-size: 14px;
     color: rgb(120, 120, 150);
 }
 
-#left-ads-card .rating {
+.page .ads-popup .left-ads-card .rating {
     position: absolute;
     display: flex;
     gap: 12px;
@@ -368,17 +434,17 @@ nav {
     bottom: 28px;
 }
 
-#left-ads-card .star {
+.page .ads-popup .left-ads-card .star {
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-#left-ads-card .star i {
+.page .ads-popup .left-ads-card .star i {
     color: rgb(255, 225, 0);
 }
 
-#bottom-ads-card {
+.page .ads-popup .bottom-ads-card {
     position: relative;
     display: flex;
     min-width: 380px;
@@ -390,7 +456,14 @@ nav {
     box-shadow: 5px 5px 15px rgba(0, 0, 0, .05);
 }
 
-#bottom-ads-card::before {
+#availability.page .ads-popup .bottom-ads-card {
+    height: calc(125px - 36px);
+    min-width: calc(375px - 12px);
+    max-width: calc(375px - 12px);
+    justify-content: center;
+}
+
+.page .ads-popup .bottom-ads-card::before {
     position: absolute;
     content: '';
     top: 0;
@@ -400,7 +473,7 @@ nav {
     background: rgb(255, 255, 255);
 }
 
-#phone {
+.phone {
     position: absolute;
     display: flex;
     width: 75%;
@@ -409,25 +482,84 @@ nav {
     transition: .3s;
 }
 
-#phone:hover {
+#availability .phone {
+    max-width: 225px;
+    transform: translateY(-250px);
+    z-index: 4;
+}
+
+.phone:hover {
     transform: translateY(-324px);
 }
 
-#phone img {
+#availability .phone:hover {
+    transform: translateY(-275px);
+}
+
+.phone img {
     position: absolute;
     width: 100%;
     object-fit: contain;
 }
 
+#availability.page .extra-box {
+    position: relative;
+    height: calc(513px - 200px);
+}
+
+#availability.page .ads-popup .extra-ads-card {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    left: -24px;
+    height: calc(212px - 12px);
+    min-width: calc(375px + 12px);
+    max-width: calc(375px + 12px);
+    justify-content: center;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: 5px -5px 15px rgba(0, 0, 0, .05);
+    z-index: 3;
+}
+
+#availability.page .ads-popup .extra-ads-card::before {
+    position: absolute;
+    content: '';
+    top: -24px;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    background: rgb(255, 255, 255);
+}
+
+#availability.page .ads-popup .extra-ads-card::after {
+    position: absolute;
+    content: '';
+    top: -24px;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    border-bottom-left-radius: 24px;
+    box-shadow: inset 5px -5px 5px rgba(0, 0, 0, .05);
+    background: var(--main);
+}
+
+#availability.page .ads-popup .extra-ads-card img {
+    width: 180px;
+    transform: translateY(35px);
+}
+
 #menu {
     display: flex;
+    padding-top: 72px;
+    min-height: max-content;
     flex-direction: column;
     align-items: center;
 }
 
-#menu .header {
+.page .header {
     display: block;
-    margin: 24px 0 72px;
+    padding: 24px 0 72px;
     text-align: center;
     font-weight: 600;
     font-size: 48px;
@@ -437,7 +569,6 @@ nav {
 #menu .row {
     display: flex;
     width: 72.5vw;
-    margin-bottom: 72px;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: stretch;
@@ -470,6 +601,164 @@ nav {
     font-size: 22px;
 }
 
+#availability {
+    flex-direction: column;
+}
+
+#availability .ads-popup {
+    padding-top: 24px;
+}
+
+#about {
+    display: flex;
+    padding-top: 100px;
+    min-height: max-content;
+    justify-content: center;
+    z-index: 1;
+    color: var(--strong);
+}
+
+#about .col {
+    position: relative;
+}
+
+#about .col:first-child {
+    display: flex;
+    padding-top: 32px;
+    flex-direction: column;
+    font-size: 72px;
+}
+
+#about .brand {
+    font-weight: 500;
+}
+
+#about .headline {
+    display: block;
+    margin-top: -28px;
+    font-family: 'poppins-sb';
+}
+
+#about .socmed {
+    display: flex;
+    margin-top: 24px;
+    align-items: center;
+    text-decoration: none;
+    font-size: 24px;
+    color: var(--strong);
+    gap: 12px;
+}
+
+#about .identity {
+    position: absolute;
+    display: flex;
+    bottom: 132px;
+    right: -100px;
+    flex-direction: column;
+}
+
+#about .name {
+    font-weight: 600;
+}
+
+#about img {
+    opacity: .8;
+}
+
+footer {
+    position: relative;
+    display: flex;
+    padding: 32px 0 22px;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    background: rgb(150, 142, 138);
+}
+
+footer .row {
+    display: flex;
+    width: 75vw;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+footer .row:last-child {
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--secondary);
+}
+
+footer .col {
+    display: flex;
+    flex-direction: column;
+    font-family: 'poppins';
+    color: rgb(255, 255, 255);
+    gap: 12px;
+}
+
+footer .title {
+    line-height: 32px;
+    font-family: 'poppins';
+    font-size: 28px;
+}
+
+footer label {
+    font-family: 'poppins-sb';
+}
+
+footer span {
+    font-family: 'poppins';
+}
+
+footer a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-family: 'poppins';
+    font-size: 14px;
+    color: var(--secondary);
+}
+
+footer a:hover {
+    text-decoration: line-through;
+}
+
+footer .double-list {
+    display: flex;
+    gap: 125px;
+}
+
+footer .list-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+@media(max-width: 1300px) {
+    #about {
+        padding: 100px 72px 0;
+        padding-right: 124px;
+    }
+
+    #about .col:first-child {
+        font-size: 48px;
+    }
+
+    #about .headline {
+        margin-top: -18px;
+    }
+
+    #about .socmed {
+        font-size: 18px;
+    }
+
+    #about .identity {
+        bottom: 132px;
+        right: -64px;
+    }
+}
+
 @media(max-width: 1250px) {
     #menu .row {
         width: initial;
@@ -485,9 +774,14 @@ nav {
 
     #home,
     #ads,
-    #menu {
+    #menu,
+    #availability {
         padding-left: 100px;
         padding-right: 100px;
+    }
+
+    footer .row {
+        width: 85vw;
     }
 
     #home .oven {
@@ -495,8 +789,8 @@ nav {
         border-radius: 28px;
     }
 
-    #menu .header {
-        margin: 12px 0 54px;
+    .page .header {
+        padding: 12px 0 54px;
         font-size: 40px;
     }
 
@@ -508,6 +802,17 @@ nav {
 @media(max-width: 1000px) {
     .nav-title img {
         width: 72px;
+    }
+
+    #about {
+        padding: 64px 48px 0;
+        padding-right: 100px;
+    }
+
+    #about img {
+        width: 350px;
+        transform: translateY(48px) translateX(-32px);
+        object-fit: contain;
     }
 
     #home {
@@ -530,10 +835,6 @@ nav {
         font-size: 13px;
     }
 
-    #ads {
-        padding-bottom: 84px;
-    }
-
     .btn {
         padding: 5px 32px;
         font-size: 16px;
@@ -547,67 +848,152 @@ nav {
         margin-top: 52px;
     }
 
-    #top-ads-card img {
+    .page .ads-popup .top-ads-card img {
         width: 200px;
     }
 
-    #top-ads-card img:hover {
+    .page .ads-popup .top-ads-card img:hover {
         transform: translateY(-6px);
     }
 
 
-    #top-ads-card {
+    .page .ads-popup .top-ads-card {
         height: 150px;
         padding-right: 310px;
     }
 
-    #left-ads-card {
+    .page .ads-popup .left-ads-card {
         height: calc(250px - 24px);
     }
 
-    #bottom-ads-card {
+    .page .ads-popup .bottom-ads-card {
         height: 250px;
         min-width: 310px;
         max-width: 310px;
     }
 
-    #phone {
+    .phone {
         width: 80%;
         transform: translateY(-200px);
     }
 
-    #phone:hover {
+    .phone:hover {
         transform: translateY(-212px);
     }
 
-    #left-ads-card .rate-bg {
+    .page .ads-popup .left-ads-card .rate-bg {
         bottom: -75px;
         right: -75px;
         padding: 40px 100px 74px 48px;
         font-size: 48px;
         opacity: .6;
     }
+
+    footer .double-list {
+        gap: 64px;
+    }
 }
 
 @media(max-width: 850px) {
-    #top-ads-card img {
+    .page .ads-popup .top-ads-card img {
         width: 175px;
     }
 
-    #left-ads-card {
+    .page .ads-popup .left-ads-card {
         padding: 22px 24px;
     }
 
-    #left-ads-card p {
+    .page .ads-popup .left-ads-card p {
         line-height: 24px;
         font-size: 14px;
     }
 
-    #left-ads-card .rating {
+    .page .ads-popup .left-ads-card .rating {
         bottom: 22px;
     }
 
-    #left-ads-card span {
+    .page .ads-popup .left-ads-card span {
+        font-size: 12px;
+    }
+
+    #availability.page .ads-popup .top-ads-card {
+        padding-right: 300px;
+        max-width: 600px;
+    }
+
+    #availability.page .ads-popup .left-ads-card {
+        min-width: calc(300px - 12px);
+        max-width: calc(300px - 12px);
+    }
+
+    #availability.page .ads-popup .bottom-ads-card {
+        min-width: calc(300px - 12px);
+        max-width: calc(300px - 12px);
+    }
+
+    #availability .phone {
+        max-width: 225px;
+        transform: translateY(-240px);
+        z-index: 4;
+    }
+
+    #availability .phone:hover {
+        transform: translateY(-250px);
+    }
+
+    #availability.page .extra-box {
+        position: relative;
+        height: calc(513px - 200px);
+    }
+
+    #availability.page .ads-popup .extra-ads-card {
+        min-width: calc(300px + 12px);
+        max-width: calc(300px + 12px);
+    }
+
+    #about {
+        padding: 64px 100px 24px;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    #about .col:last-child {
+        margin: 0 auto;
+        width: max-content;
+    }
+
+    #about img {
+        transform: translateY(0) translateX(-24px);
+    }
+
+    footer .row {
+        width: 75vw;
+    }
+
+    footer .row:first-child {
+        flex-wrap: wrap;
+        gap: 24px;
+    }
+
+    footer .row:first-child .col:first-child {
+        width: 100%;
+    }
+
+    footer .title {
+        line-height: 24px;
+        font-size: 22px;
+    }
+
+    footer label {
+        font-size: 14px;
+    }
+
+    footer .col,
+    footer .list-col {
+        gap: 8px;
+    }
+
+    footer a {
         font-size: 12px;
     }
 }
@@ -624,55 +1010,83 @@ nav {
 
     #home,
     #ads,
-    #menu {
+    #menu,
+    #availability {
         padding-left: 72px;
         padding-right: 72px;
     }
 
-    #ads {
-        padding-bottom: 54px;
-    }
-
-    #top-ads-card {
+    .page .ads-popup .top-ads-card {
         height: 125px;
         padding-right: 280px;
     }
 
-    #top-ads-card img {
+    .page .ads-popup .top-ads-card img {
         width: 150px;
     }
 
-    #left-ads-card {
+    .page .ads-popup .left-ads-card {
         height: calc(280px - 12px);
     }
 
-    #bottom-ads-card {
+    .page .ads-popup .bottom-ads-card {
         height: 280px;
         min-width: 280px;
         max-width: 280px;
     }
 
-    #phone {
+    .phone {
         width: 80%;
         transform: translateY(-175px);
     }
 
-    #phone:hover {
+    .phone:hover {
         transform: translateY(-185px);
     }
 
-    .ads-popup .box {
+    .page .ads-popup .box {
         padding-top: 12px;
         padding-right: 12px;
     }
 
-    #menu .header {
-        margin: 0 0 32px;
+    .page .header {
+        padding: 0 0 32px;
         font-size: 28px;
     }
 
     #menu .col {
         gap: 12px;
+    }
+
+    #availability .ads-popup {
+        padding-top: 32px;
+    }
+
+    #availability.page .ads-popup .top-ads-card .insta-logo {
+        transform: translateY(-10px);
+    }
+
+    #availability.page .ads-popup .top-ads-card p {
+        transform: translateY(-26px);
+    }
+
+    #availability.page .ads-popup .extra-ads-card {
+        left: -12px;
+        bottom: 12px;
+        min-width: 300px;
+        max-width: 300px;
+    }
+
+    #availability.page .ads-popup .extra-ads-card::before {
+        border-top-right-radius: 20px;
+    }
+
+    #availability.page .ads-popup .extra-ads-card::after {
+        border-top-right-radius: 20px;
+    }
+
+    #availability.page .ads-popup .extra-ads-card a {
+        transform: translateY(16px);
     }
 }
 
@@ -702,31 +1116,27 @@ nav {
         height: calc(70vh - 12px);
     }
 
-    .ads-popup .row:nth-child(2) {
+    .page .ads-popup .row:nth-child(2) {
         flex-direction: column;
     }
 
-    .ads-popup .box {
+    .page .ads-popup .box {
         flex: none;
         padding-right: 0;
         order: 2;
     }
 
-    #ads {
-        padding-top: 0;
-    }
-
-    #top-ads-card {
+    .page .ads-popup .top-ads-card {
         padding: 0;
         border-bottom-left-radius: 0;
     }
 
-    #left-ads-card {
+    .page .ads-popup .left-ads-card {
         min-height: 150px;
         height: max-content;
     }
 
-    #bottom-ads-card {
+    .page .ads-popup .bottom-ads-card {
         flex: none;
         order: 1;
         width: 100%;
@@ -734,17 +1144,127 @@ nav {
         height: 475px;
     }
 
-    #bottom-ads-card::before {
+    .page .ads-popup .bottom-ads-card::before {
         display: none;
     }
 
-    #phone {
+    .phone {
         transform: none;
         width: 224px;
     }
 
-    #phone:hover {
+    .phone:hover {
         transform: none;
+    }
+
+    #availability.page .ads-popup {
+        padding-top: 0;
+    }
+
+    #availability.page .ads-popup .top-ads-card {
+        padding-top: 32px;
+        padding-right: 0;
+        width: 85vw;
+        max-width: 1000px;
+        height: 125px;
+    }
+
+    #availability.page .ads-popup .left-ads-card {
+        height: 500px;
+        min-width: 85vw;
+        max-width: 1000px;
+        border-bottom-right-radius: 24px;
+    }
+
+    #availability.page .ads-popup .left-ads-card .phone {
+        transform: translateY(-632px);
+    }
+
+    #availability.page .ads-popup .left-ads-card .phone:hover {
+        transform: translateY(-632px);
+    }
+
+    #availability.page .ads-popup .bottom-ads-card .phone {
+        transform: translateY(650px);
+    }
+
+    #availability.page .ads-popup .bottom-ads-card .phone:hover {
+        transform: translateY(650px);
+    }
+
+    #availability.page .ads-popup .bottom-ads-card {
+        height: 465px;
+        min-width: 85vw;
+        max-width: 1000px;
+    }
+
+    #availability .phone {
+        max-width: 225px;
+        z-index: 4;
+    }
+
+    #availability.page .extra-box {
+        height: 600px;
+    }
+
+    #availability.page .ads-popup .extra-ads-card {
+        left: 0;
+        bottom: 0;
+        height: 125px;
+        min-width: 85vw;
+        max-width: 1000px;
+        border-top-left-radius: 24px;
+        border-bottom-left-radius: 24px;
+    }
+
+    #availability.page .ads-popup .extra-ads-card::before {
+        display: none;
+    }
+
+    #availability.page .ads-popup .extra-ads-card::after {
+        display: none;
+    }
+
+    #availability.page .ads-popup .extra-ads-card img {
+        width: 150px;
+        transform: translateY(-32px);
+    }
+
+    #about {
+        padding: 48px 72px 24px;
+        gap: 0;
+    }
+
+    #about .col:first-child {
+        font-size: 40px;
+    }
+
+    #about img {
+        width: 300px;
+    }
+
+    #about .identity {
+        right: 0;
+        font-size: 12px;
+    }
+
+    #about .headline {
+        margin-top: -12px;
+    }
+
+    #about .socmed {
+        margin-top: 12px;
+        font-size: 14px;
+        gap: 5px;
+    }
+
+    footer .row:first-child .col {
+        width: 100%;
+    }
+
+    footer .double-list {
+        justify-content: space-between;
+        gap: 24px;
     }
 }
 
@@ -763,7 +1283,8 @@ nav {
         padding-right: 16px;
     }
 
-    #ads {
+    #ads,
+    #availability {
         padding-left: 16px;
         padding-right: 16px;
     }
@@ -806,6 +1327,19 @@ nav {
 
     .btn.non-border {
         padding: 5px 18px;
+    }
+
+    #about {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    footer .row {
+        width: 85vw;
+    }
+
+    footer .row:last-child {
+        font-size: 10px;
     }
 }
 
